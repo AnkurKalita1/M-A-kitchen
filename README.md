@@ -12,10 +12,13 @@ A comprehensive buyer registration platform for M&A Kitchen, featuring multi-ste
   - Secure Payment with Razorpay
 
 - **Subscription Tiers**
-  - Regular (₹100/month)
-  - Silver (₹500/month)
-  - Gold (₹1000/month)
-  - Platinum (₹2500/month)
+  - 3 months (Quarterly subscription)
+  - Regular= 999 USD per user
+  - Silver = 5999 USD per user
+  - Gold = 12999 USD per user
+ 
+  - 6 months (half-yearly subscription)
+  - Regular= 2999 USD per user , 
 
 - **Marketplace ID Generation**
   - Auto-generated buyer IDs: `BUY-YYYY-XXXXXX`
