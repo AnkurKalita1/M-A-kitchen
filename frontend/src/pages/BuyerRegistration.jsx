@@ -91,9 +91,23 @@ function BuyerRegistration() {
     }
   };
 
-  const handleCompanyInfoSubmit = (data) => {
-    updateFormData(data);
-    handleNext();
+  const handleCompanyInfoSubmit = async (data) => {
+    try {
+      setLoading(true);
+      
+      // Update buyer information in backend
+      if (formData.buyerId) {
+        await buyerAPI.updateBuyer(formData.buyerId, data);
+      }
+      
+      updateFormData(data);
+      handleNext();
+    } catch (error) {
+      console.error('Error updating company info:', error);
+      toast.error(error.response?.data?.error?.message || 'Failed to save company information');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDocumentsSubmit = (documents) => {
@@ -129,6 +143,7 @@ function BuyerRegistration() {
             data={formData}
             onSubmit={handleCompanyInfoSubmit}
             onBack={handleBack}
+            loading={loading}
           />
         );
       case 3:

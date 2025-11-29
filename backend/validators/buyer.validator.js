@@ -35,6 +35,7 @@ export const validateBuyerRegistration = (data) => {
   return schema.validate(data, { abortEarly: false });
 };
 
+
 export const validateDocumentUpload = (data) => {
   const schema = Joi.object({
     documentType: Joi.string()
@@ -56,4 +57,19 @@ export const validateDocumentUpload = (data) => {
 
   return schema.validate(data, { abortEarly: false });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

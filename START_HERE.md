@@ -155,15 +155,6 @@ Dashboard with all your info
 2. Add Razorpay keys
 3. Test the registration
 
-### Today:
-1. Read **QUICKSTART.md** for details
-2. Complete **VERIFICATION.md** checklist
-3. Explore the code
-
-### This Week:
-1. Read **README.md** for deployment
-2. Get production AWS accounts
-3. Deploy to production
 
 ---
 
@@ -184,10 +175,7 @@ npm run start-db
 npm run init-db
 ```
 
-**Something broken?**
-→ Read **VERIFICATION.md** for complete checklist
 
----
 
 ## 🔗 Important URLs
 

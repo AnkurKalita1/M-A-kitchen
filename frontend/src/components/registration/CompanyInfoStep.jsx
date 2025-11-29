@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { Loader2 } from 'lucide-react';
 
 const INDUSTRIES = [
   'Technology',
@@ -29,7 +30,7 @@ const SECTORS = [
 
 const REGIONS = ['North America', 'Europe', 'Asia Pacific', 'Latin America', 'Middle East', 'Africa', 'Global'];
 
-function CompanyInfoStep({ data, onSubmit, onBack }) {
+function CompanyInfoStep({ data, onSubmit, onBack, loading }) {
   const {
     register,
     handleSubmit,
@@ -246,11 +247,18 @@ function CompanyInfoStep({ data, onSubmit, onBack }) {
       </div>
 
       <div className="flex justify-between pt-6">
-        <button type="button" onClick={onBack} className="btn-secondary">
+        <button type="button" onClick={onBack} className="btn-secondary" disabled={loading}>
           Back
         </button>
-        <button type="submit" className="btn-primary">
-          Continue
+        <button type="submit" className="btn-primary flex items-center gap-2" disabled={loading}>
+          {loading ? (
+            <>
+              <Loader2 className="w-5 h-5 animate-spin" />
+              Saving...
+            </>
+          ) : (
+            'Continue'
+          )}
         </button>
       </div>
     </form>

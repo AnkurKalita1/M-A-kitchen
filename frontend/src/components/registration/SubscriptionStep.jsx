@@ -3,70 +3,79 @@ import { Check, Crown, Star, Sparkles, Award } from 'lucide-react';
 
 const TIERS = [
   {
-    id: 'REGULAR',
+    id: 'REGULAR_QUARTERLY',
     name: 'Regular',
+    duration: 'Quarterly (3 months)',
     icon: Star,
-    price: 100,
+    price: 999,
+    currency: 'USD',
     color: 'from-gray-400 to-gray-600',
     features: [
-      'Basic deal access',
-      '5 deals per month',
-      'Email support',
-      'Deal notifications',
+      'Exploratory access to marketplace for chosen Industry vertical',
+      'No live auction discounts',
+      'Access to Buyers/Sellers within 1 Industry vertical (chosen while subscribing)',
+      'No access to Agents',
+      'No discounts on Value Added Offerings (VAOs)',
+      'No Auto upgrade to next version of application platform on version update',
+      'Low priority marketplace listing (low visibility)',
     ],
   },
   {
-    id: 'SILVER',
+    id: 'SILVER_QUARTERLY',
     name: 'Silver',
+    duration: 'Quarterly (3 months)',
     icon: Sparkles,
-    price: 500,
+    price: 5999,
+    currency: 'USD',
     color: 'from-gray-300 to-gray-500',
     popular: false,
     features: [
-      'Enhanced deal access',
-      '20 deals per month',
-      'Priority support',
-      'AI recommendations',
-      'Advanced filters',
+      'Complimentary access to all Sellers, Buyers & Agents within 2 Industry segments in marketplace',
+      '5% discount on Live Auction Event tickets for 2 events each',
+      'Auto upgrade to next version of application platform on version update',
+      'Medium priority listing amongst Sellers, Buyers and Agents (med visibility)',
+      '1% discount on purchase of Value-Added Offerings (VAOs)',
+      'Dashboard Analytics view of marketplace',
     ],
   },
   {
-    id: 'GOLD',
+    id: 'GOLD_QUARTERLY',
     name: 'Gold',
+    duration: 'Quarterly (3 months)',
     icon: Crown,
-    price: 1000,
+    price: 12999,
+    currency: 'USD',
     color: 'from-yellow-400 to-yellow-600',
     popular: true,
     features: [
-      'Premium deal access',
-      '50 deals per month',
-      '24/7 support',
-      'Advanced AI insights',
-      'Auction participation',
-      'Custom deal alerts',
+      'Complimentary access to all Sellers, Buyers & Agents within 6 Industry segments in marketplace',
+      '15% discount on Live Auction Event tickets for 4 events each',
+      'Auto upgrade to next version of application platform on version update',
+      'High priority listing amongst Sellers, Buyers and Agents (high visibility)',
+      '7% discount on purchase of Value-Added Offerings (VAOs)',
+      '24% discount on Subscription Renewal',
+      'High priority in Live Auction Event bookings (balcony seats)',
+      'Dashboard Analytics view of marketplace',
     ],
   },
   {
-    id: 'PLATINUM',
-    name: 'Platinum',
+    id: 'REGULAR_HALFYEARLY',
+    name: 'Regular',
+    duration: 'Half-Yearly (6 months)',
     icon: Award,
-    price: 2500,
-    color: 'from-purple-400 to-purple-600',
+    price: 2999,
+    currency: 'USD',
+    color: 'from-blue-400 to-blue-600',
     popular: false,
     features: [
-      'Unlimited deal access',
-      'Unlimited deals',
-      'Dedicated account manager',
-      'Premium AI insights',
-      'Priority auction access',
-      'Custom reports',
-      'White-glove service',
+      'Complimentary access to all Sellers, Buyers & Agents within 1 Industry segment in marketplace',
+      '1% discount on Live Auction Event ticket for 1 event',
     ],
   },
 ];
 
 function SubscriptionStep({ selectedTier, onSelect, onBack }) {
-  const [selected, setSelected] = useState(selectedTier || 'GOLD');
+  const [selected, setSelected] = useState(selectedTier || 'GOLD_QUARTERLY');
 
   const handleSelect = (tierId) => {
     setSelected(tierId);
@@ -110,10 +119,11 @@ function SubscriptionStep({ selectedTier, onSelect, onBack }) {
                 {isSelected && <Check className="w-6 h-6 text-primary-600" />}
               </div>
 
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">{tier.name}</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-1">{tier.name}</h3>
+              <p className="text-sm text-gray-500 mb-4">{tier.duration}</p>
               <div className="mb-4">
-                <span className="text-3xl font-bold text-gray-900">₹{tier.price}</span>
-                <span className="text-gray-600">/month</span>
+                <span className="text-3xl font-bold text-gray-900">${tier.price.toLocaleString()}</span>
+                <span className="text-gray-600"> USD</span>
               </div>
 
               <ul className="space-y-3">
@@ -130,10 +140,10 @@ function SubscriptionStep({ selectedTier, onSelect, onBack }) {
       </div>
 
       <div className="bg-gradient-to-r from-primary-50 to-purple-50 border border-primary-200 rounded-lg p-6 mt-8">
-        <h4 className="font-semibold text-gray-900 mb-2">🎯 Why Choose Premium Tiers?</h4>
+        <h4 className="font-semibold text-gray-900 mb-2">🎯 Subscription Plans</h4>
         <p className="text-sm text-gray-700">
-          Higher tier subscriptions give you access to AI-powered deal recommendations, 
-          priority auction access, and dedicated support to help you find the perfect M&A opportunities.
+          Choose between quarterly (3 months) or half-yearly (6 months) subscriptions. Higher tier subscriptions 
+          provide greater marketplace access, auction discounts, and priority visibility for M&A opportunities.
         </p>
       </div>
 

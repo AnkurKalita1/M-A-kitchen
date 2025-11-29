@@ -4,10 +4,10 @@ import { CreditCard, Loader2, Shield, Lock } from 'lucide-react';
 import { buyerAPI } from '../../services/api';
 
 const TIER_INFO = {
-  REGULAR: { name: 'Regular', price: 100 },
-  SILVER: { name: 'Silver', price: 500 },
-  GOLD: { name: 'Gold', price: 1000 },
-  PLATINUM: { name: 'Platinum', price: 2500 },
+  REGULAR_QUARTERLY: { name: 'Regular (Quarterly)', price: 999, currency: 'USD' },
+  SILVER_QUARTERLY: { name: 'Silver (Quarterly)', price: 5999, currency: 'USD' },
+  GOLD_QUARTERLY: { name: 'Gold (Quarterly)', price: 12999, currency: 'USD' },
+  REGULAR_HALFYEARLY: { name: 'Regular (Half-Yearly)', price: 2999, currency: 'USD' },
 };
 
 function PaymentStep({ buyerId, subscriptionTier, onComplete, onBack }) {
@@ -118,7 +118,7 @@ function PaymentStep({ buyerId, subscriptionTier, onComplete, onBack }) {
           </div>
           <div className="border-t border-primary-200 pt-3 flex justify-between items-center">
             <span className="text-lg font-semibold text-gray-900">Total Amount</span>
-            <span className="text-2xl font-bold text-primary-600">₹{tierInfo.price}</span>
+            <span className="text-2xl font-bold text-primary-600">${tierInfo.price.toLocaleString()} {tierInfo.currency || 'USD'}</span>
           </div>
         </div>
       </div>
@@ -175,7 +175,7 @@ function PaymentStep({ buyerId, subscriptionTier, onComplete, onBack }) {
           ) : (
             <>
               <Lock className="w-5 h-5" />
-              Pay ₹{tierInfo.price} Securely
+              Pay ${tierInfo.price.toLocaleString()} {tierInfo.currency || 'USD'} Securely
             </>
           )}
         </button>

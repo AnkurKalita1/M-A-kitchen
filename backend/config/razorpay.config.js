@@ -27,25 +27,67 @@ if (razorpayInstance) {
 }
 
 export const SUBSCRIPTION_TIERS = {
-  REGULAR: {
-    name: 'Regular',
-    price: 10000, // in paise (₹100)
-    features: ['Basic deal access', '5 deals per month', 'Email support']
+  REGULAR_QUARTERLY: {
+    name: 'Regular (Quarterly)',
+    duration: '3 months',
+    price: 99900, // $999 USD in cents (999 * 100)
+    currency: 'USD',
+    features: [
+      'Exploratory access to marketplace for chosen Industry vertical',
+      'No live auction discounts',
+      'Access to Buyers/Sellers within 1 Industry vertical (chosen while subscribing)',
+      'No access to Agents',
+      'No discounts on Value Added Offerings (VAOs)',
+      'No Auto upgrade to next version of application platform on version update',
+      'Low priority marketplace listing (low visibility)'
+    ]
   },
-  SILVER: {
-    name: 'Silver',
-    price: 50000, // in paise (₹500)
-    features: ['Enhanced deal access', '20 deals per month', 'Priority support', 'AI recommendations']
+  SILVER_QUARTERLY: {
+    name: 'Silver (Quarterly)',
+    duration: '3 months',
+    price: 599900, // $5999 USD in cents
+    currency: 'USD',
+    features: [
+      'Complimentary access to all Sellers, Buyers & Agents within 2 Industry segments in marketplace',
+      '5% discount on Live Auction Event tickets for 2 events each',
+      'Auto upgrade to next version of application platform on version update',
+      'Medium priority listing amongst Sellers, Buyers and Agents (med visibility)',
+      '1% discount on purchase of Value-Added Offerings (VAOs)',
+      'Dashboard Analytics view of marketplace'
+    ]
   },
-  GOLD: {
-    name: 'Gold',
-    price: 100000, // in paise (₹1000)
-    features: ['Premium deal access', '50 deals per month', '24/7 support', 'Advanced AI insights', 'Auction participation']
+  GOLD_QUARTERLY: {
+    name: 'Gold (Quarterly)',
+    duration: '3 months',
+    price: 1299900, // $12999 USD in cents
+    currency: 'USD',
+    features: [
+      'Complimentary access to all Sellers, Buyers & Agents within 6 Industry segments in marketplace',
+      '15% discount on Live Auction Event tickets for 4 events each',
+      'Auto upgrade to next version of application platform on version update',
+      'High priority listing amongst Sellers, Buyers and Agents (high visibility)',
+      '7% discount on purchase of Value-Added Offerings (VAOs)',
+      '24% discount on Subscription Renewal',
+      'High priority in Live Auction Event bookings (balcony seats)',
+      'Dashboard Analytics view of marketplace'
+    ]
   },
-  PLATINUM: {
-    name: 'Platinum',
-    price: 250000, // in paise (₹2500)
-    features: ['Unlimited deal access', 'Unlimited deals', 'Dedicated account manager', 'Premium AI insights', 'Priority auction access', 'Custom reports']
+  REGULAR_HALFYEARLY: {
+    name: 'Regular (Half-Yearly)',
+    duration: '6 months',
+    price: 299900, // $2999 USD in cents
+    currency: 'USD',
+    features: [
+      'Complimentary access to all Sellers, Buyers & Agents within 1 Industry segment in marketplace',
+      '1% discount on Live Auction Event ticket for 1 event'
+    ]
   }
 };
+
+
+
+
+
+
+
 

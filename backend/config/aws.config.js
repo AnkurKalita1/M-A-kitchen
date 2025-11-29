@@ -36,3 +36,4 @@ export const TABLES = {
 
 export const BUCKET_NAME = process.env.S3_BUCKET_NAME || 'ma-kitchen-documents';
 
+ 

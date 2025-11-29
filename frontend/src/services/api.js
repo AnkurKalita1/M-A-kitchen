@@ -23,6 +23,11 @@ export const buyerAPI = {
     return response.data;
   },
 
+  updateBuyer: async (buyerId, data) => {
+    const response = await api.put(`/buyer/${buyerId}`, data);
+    return response.data;
+  },
+
   uploadDocument: async (buyerId, documentType, file) => {
     const formData = new FormData();
     formData.append('document', file);

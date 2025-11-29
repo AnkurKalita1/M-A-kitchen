@@ -51,7 +51,9 @@ export const registerBuyer = async (req, res) => {
         message: 'Buyer registration initiated successfully'
       }
     });
-  } catch (error) {
+  } 
+  
+  catch (error) {
     console.error('Error registering buyer:', error);
     res.status(500).json({ error: { message: 'Failed to register buyer' } });
   }
@@ -78,6 +80,63 @@ export const getBuyer = async (req, res) => {
   } catch (error) {
     console.error('Error fetching buyer:', error);
     res.status(500).json({ error: { message: 'Failed to fetch buyer details' } });
+  }
+};
+
+// Update buyer information
+export const updateBuyer = async (req, res) => {
+  try {
+    const { buyerId } = req.params;
+    const updateData = req.body;
+
+    // Build update expression dynamically
+    const updateExpressions = [];
+    const expressionAttributeValues = {};
+    const expressionAttributeNames = {};
+
+    // Fields that can be updated
+    const allowedFields = [
+      'companyName', 'companyWebsite', 'industry', 'companySize',
+      'jobTitle', 'yearsOfExperience', 'linkedinProfile',
+      'investmentRange', 'sectorsOfInterest', 'geographicPreference'
+    ];
+
+    Object.keys(updateData).forEach((key) => {
+      if (allowedFields.includes(key) && updateData[key] !== undefined) {
+        const placeholder = `:${key}`;
+        const namePlaceholder = `#${key}`;
+        updateExpressions.push(`${namePlaceholder} = ${placeholder}`);
+        expressionAttributeValues[placeholder] = updateData[key];
+        expressionAttributeNames[namePlaceholder] = key;
+      }
+    });
+
+    if (updateExpressions.length === 0) {
+      return res.status(400).json({ error: { message: 'No valid fields to update' } });
+    }
+
+    // Add updatedAt timestamp
+    updateExpressions.push('#updatedAt = :updatedAt');
+    expressionAttributeValues[':updatedAt'] = new Date().toISOString();
+    expressionAttributeNames['#updatedAt'] = 'updatedAt';
+
+    const result = await docClient.send(new UpdateCommand({
+      TableName: TABLES.BUYERS,
+      Key: { buyerId },
+      UpdateExpression: `SET ${updateExpressions.join(', ')}`,
+      ExpressionAttributeValues: expressionAttributeValues,
+      ExpressionAttributeNames: expressionAttributeNames,
+      ReturnValues: 'ALL_NEW'
+    }));
+
+    res.json({
+      success: true,
+      data: result.Attributes,
+      message: 'Buyer information updated successfully'
+    });
+  } catch (error) {
+    console.error('Error updating buyer:', error);
+    res.status(500).json({ error: { message: 'Failed to update buyer information' } });
   }
 };
 
@@ -177,7 +236,7 @@ export const createPaymentOrder = async (req, res) => {
         data: {
           orderId: `test_order_${Date.now()}`,
           amount: tierInfo.price,
-          currency: 'INR',
+          currency: tierInfo.currency || 'USD',
           keyId: 'test_key',
           testMode: true
         }
@@ -185,9 +244,14 @@ export const createPaymentOrder = async (req, res) => {
     }
 
     try {
+      // Convert USD to cents (smallest currency unit)
+      // tierInfo.price is already in cents, so use directly
+      const amountInCents = tierInfo.price;
+      const currency = tierInfo.currency || 'USD';
+
       const options = {
-        amount: tierInfo.price,
-        currency: 'INR',
+        amount: amountInCents,
+        currency: currency,
         receipt: `receipt_${buyerId}_${Date.now()}`,
         notes: {
           buyerId,
@@ -215,7 +279,7 @@ export const createPaymentOrder = async (req, res) => {
         data: {
           orderId: `test_order_${Date.now()}`,
           amount: tierInfo.price,
-          currency: 'INR',
+          currency: tierInfo.currency || 'USD',
           keyId: 'test_key',
           testMode: true
         }

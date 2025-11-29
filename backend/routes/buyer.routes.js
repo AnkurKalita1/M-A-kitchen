@@ -3,6 +3,7 @@ import multer from 'multer';
 import { 
   registerBuyer, 
   getBuyer, 
+  updateBuyer,
   uploadDocument,
   createPaymentOrder,
   verifyPayment,
@@ -20,6 +21,7 @@ const upload = multer({
 // Buyer registration flow
 router.post('/register', registerBuyer);
 router.get('/:buyerId', getBuyer);
+router.put('/:buyerId', updateBuyer); // Update buyer information
 
 // Document upload
 router.post('/:buyerId/upload', upload.single('document'), uploadDocument);
