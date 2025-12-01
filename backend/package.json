@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "init-db": "node scripts/init-db.js"
+    "init-db": "node scripts/init-db.js",
+    "init-db-production": "node scripts/init-db-production.js"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.490.0",

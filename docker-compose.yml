@@ -1,6 +1,8 @@
+
 version: '3.8'
 
 services:
+
   dynamodb-local:
     image: amazon/dynamodb-local:latest
     container_name: ma-kitchen-dynamodb
@@ -21,7 +23,8 @@ services:
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
       - DOCKER_HOST=unix:///var/run/docker.sock
+   
     volumes:
-      - ./data/localstack:/tmp/localstack
       - /var/run/docker.sock:/var/run/docker.sock
+
 

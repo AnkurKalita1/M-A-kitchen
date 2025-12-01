@@ -1,5 +1,5 @@
 import { PutCommand, GetCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
-import { PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
+import { PutObjectCommand, GetObjectCommand, CreateBucketCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { v4 as uuidv4 } from 'uuid';
 import crypto from 'crypto';
@@ -55,7 +55,18 @@ export const registerBuyer = async (req, res) => {
   
   catch (error) {
     console.error('Error registering buyer:', error);
-    res.status(500).json({ error: { message: 'Failed to register buyer' } });
+    console.error('Error details:', {
+      name: error.name,
+      message: error.message,
+      code: error.code,
+      stack: error.stack
+    });
+    res.status(500).json({ 
+      error: { 
+        message: 'Failed to register buyer',
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      } 
+    });
   }
 };
 
@@ -169,12 +180,35 @@ export const uploadDocument = async (req, res) => {
     const fileExtension = req.file.originalname.split('.').pop();
     const fileName = `buyers/${buyerId}/${documentType}-${Date.now()}.${fileExtension}`;
 
-    await s3Client.send(new PutObjectCommand({
-      Bucket: BUCKET_NAME,
-      Key: fileName,
-      Body: req.file.buffer,
-      ContentType: req.file.mimetype
-    }));
+    try {
+      await s3Client.send(new PutObjectCommand({
+        Bucket: BUCKET_NAME,
+        Key: fileName,
+        Body: req.file.buffer,
+        ContentType: req.file.mimetype
+      }));
+    } catch (s3Error) {
+      console.error('S3 Upload Error:', s3Error);
+      // If bucket doesn't exist, try to create it
+      if (s3Error.name === 'NoSuchBucket' || s3Error.Code === 'NoSuchBucket') {
+        try {
+          await s3Client.send(new CreateBucketCommand({ Bucket: BUCKET_NAME }));
+          console.log(`✅ Created S3 bucket: ${BUCKET_NAME}`);
+          // Retry upload
+          await s3Client.send(new PutObjectCommand({
+            Bucket: BUCKET_NAME,
+            Key: fileName,
+            Body: req.file.buffer,
+            ContentType: req.file.mimetype
+          }));
+        } catch (createError) {
+          console.error('Failed to create bucket:', createError);
+          throw new Error('S3 bucket does not exist and could not be created. Please run: npm run init-db');
+        }
+      } else {
+        throw s3Error;
+      }
+    }
 
     // Get signed URL for access
     const signedUrl = await getSignedUrl(s3Client, new GetObjectCommand({

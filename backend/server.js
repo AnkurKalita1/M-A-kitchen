@@ -23,13 +23,16 @@ if (result.error) {
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Middleware - Allow multiple origins including Cursor preview
+// Middleware - Allow multiple origins including Cursor preview and production
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
   'http://127.0.0.1:5173',
   'http://127.0.0.1:5174',
-  process.env.FRONTEND_URL
+  process.env.FRONTEND_URL,
+  // Production URLs (Vercel, Netlify, etc.)
+  /^https:\/\/.*\.vercel\.app$/,
+  /^https:\/\/.*\.netlify\.app$/,
 ].filter(Boolean);
 
 app.use(cors({
@@ -42,10 +45,22 @@ app.use(cors({
       return callback(null, true);
     }
     
-    if (allowedOrigins.indexOf(origin) !== -1) {
+    // Check if origin matches any allowed pattern
+    const isAllowed = allowedOrigins.some(ao => {
+      if (typeof ao === 'string') {
+        return origin === ao || origin.startsWith(ao);
+      } else if (ao instanceof RegExp) {
+        return ao.test(origin);
+      }
+      return false;
+    });
+    
+    if (isAllowed) {
       callback(null, true);
-    } else {
+    } else if (process.env.NODE_ENV === 'development') {
       callback(null, true); // Allow all in development
+    } else {
+      callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true
@@ -76,8 +91,9 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 M&A Kitchen Backend running on port ${PORT}`);
-  console.log(`📊 Environment: ${process.env.NODE_ENV}`);
-  console.log(`🗄️  DynamoDB: ${process.env.DYNAMODB_ENDPOINT}`);
-  console.log(`📦 S3: ${process.env.S3_ENDPOINT}`);
+  console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🗄️  DynamoDB: ${process.env.DYNAMODB_ENDPOINT || 'AWS (us-east-1)'}`);
+  console.log(`📦 S3: ${process.env.S3_ENDPOINT || 'AWS (us-east-1)'}`);
+  console.log(`🌍 Region: ${process.env.AWS_REGION || 'us-east-1'}`);
 });
 
