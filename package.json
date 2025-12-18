@@ -1,0 +1,20 @@
+{
+  "name": "ma-kitchen-buyer",
+  "version": "1.0.0",
+  "description": "M&A Kitchen Buyer Registration System",
+  "scripts": {
+    "setup": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "start-db": "docker-compose up -d",
+    "stop-db": "docker-compose down",
+    "init-db": "node backend/scripts/init-db.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
+
+
+

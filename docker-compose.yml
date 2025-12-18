@@ -1,0 +1,32 @@
+
+version: '3.8'
+
+services:
+
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    container_name: ma-kitchen-dynamodb
+    ports:
+      - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    volumes:
+      - ./data/dynamodb:/home/dynamodblocal/data
+    working_dir: /home/dynamodblocal
+
+  localstack:
+    image: localstack/localstack:latest
+    container_name: ma-kitchen-s3
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - DOCKER_HOST=unix:///var/run/docker.sock
+   
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+
+
+
