@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { CheckCircle, Copy, Download, ArrowRight, AlertCircle } from 'lucide-react';
+import { CheckCircle, Copy, Download, ArrowRight } from 'lucide-react';
 import { buyerAPI, agentAPI, sellerAPI } from '../services/api';
 import { toast } from 'react-toastify';
 
@@ -136,58 +136,66 @@ Please keep these credentials secure and do not share them with anyone.`;
   const displayTier = getSubscriptionTierDisplay(userData.subscriptionTier);
   const userRole = getUserRoleDisplay(buyerId, agentId, sellerId);
 
+  const getTierDescription = (tier) => {
+    const descriptions = {
+      'Regular': 'You have successfully subscribed to the Regular tier. Enjoy exclusive features and premium access to the M&A Kitchen marketplace.',
+      'Silver': 'You have successfully subscribed to the Silver tier. Enjoy exclusive features and premium access to the M&A Kitchen marketplace.',
+      'Gold': 'You have successfully subscribed to the Gold tier. Enjoy exclusive features and premium access to the M&A Kitchen marketplace.',
+      'Platinum': 'You have successfully subscribed to the Platinum tier. Enjoy exclusive features and premium access to the M&A Kitchen marketplace.'
+    };
+    return descriptions[tier] || descriptions['Regular'];
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#5D3FD3' }}>
-      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 sm:p-8 md:p-10">
-        {/* Success Icon */}
-        <div className="flex justify-center mb-6">
-          <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center">
-            <CheckCircle className="w-12 h-12 text-white" />
-          </div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-4" style={{ backgroundColor: '#5D3FD3' }}>
+      {/* Success Icon - Outside the form */}
+      <div className="flex justify-center mb-6">
+        <div className="w-24 h-24 bg-orange-500 rounded-full flex items-center justify-center">
+          <CheckCircle className="w-14 h-14 text-white" />
         </div>
+      </div>
 
-        {/* Title */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-3">
-          Registration Successful!
-        </h1>
-        <p className="text-lg text-gray-700 text-center mb-8">
-          Welcome to M&A Kitchen™ - The Global Investment Marketplace
-        </p>
+      {/* Title - Outside the form */}
+      <h1 className="text-2xl sm:text-2xl font-bold text-white text-center mb-3">
+        Registration Successful
+      </h1>
+      <p className="text-lg text-white text-center mb-8">
+        Welcome to M&A Kitchen™
+      </p>
 
-        {/* Subscription Details */}
+      {/* White Form Card */}
+      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-6 sm:p-8 md:p-10">
+        {/* Business Overview */}
         <div className="mb-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Subscription Details</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-            <div className="bg-gray-100 rounded-lg p-4">
-              <p className="text-sm text-gray-600 mb-1">Subscription Tier</p>
-              <p className="text-base font-bold text-gray-900">{displayTier}</p>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Business Overview</h2>
+          <div className="space-y-3">
+            <div>
+              <p className="text-sm text-gray-600 mb-1">Company Name</p>
+              <p className="text-base font-semibold text-gray-900">{userData.organizationName || 'N/A'}</p>
             </div>
-            <div className="bg-gray-100 rounded-lg p-4">
+            <div>
               <p className="text-sm text-gray-600 mb-1">User Role</p>
-              <p className="text-base font-bold text-gray-900">{userRole}</p>
+              <p className="text-base font-semibold text-gray-900">{userRole}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600 mb-1">Subscription Tier</p>
+              <p className="text-base font-semibold text-gray-900">{displayTier}</p>
             </div>
           </div>
-          {userData.organizationName && (
-            <div className="bg-gray-100 rounded-lg p-4">
-              <p className="text-sm text-gray-600 mb-1">Company Name</p>
-              <p className="text-base font-bold text-gray-900">{userData.organizationName}</p>
-            </div>
-          )}
         </div>
 
         {/* Login Credentials */}
         <div className="mb-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Your Login Credentials</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Login Credentials</h2>
           
           {/* Marketplace ID */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Marketplace ID</label>
             <div className="flex items-center gap-2">
               <input
                 type="text"
                 readOnly
                 value={userData.marketplaceId || 'Loading...'}
-                className="flex-1 px-4 py-3 bg-blue-50 border border-blue-200 rounded-lg text-sm font-semibold text-gray-900"
+                className="flex-1 px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-sm font-semibold text-gray-900"
               />
               <button
                 onClick={() => handleCopy(userData.marketplaceId, 'Marketplace ID')}
@@ -201,7 +209,6 @@ Please keep these credentials secure and do not share them with anyone.`;
 
           {/* Default Password */}
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Default Password (Temporary)</label>
             <div className="flex items-center gap-2">
               <input
                 type="text"
@@ -220,24 +227,42 @@ Please keep these credentials secure and do not share them with anyone.`;
           </div>
         </div>
 
-        {/* Security Notice */}
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
-          <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-semibold text-red-900 mb-1">Important Security Notice</p>
-              <p className="text-sm text-red-800">
-                You will be required to change this password upon your first login. Please keep these credentials secure and do not share them with anyone.
-              </p>
+        {/* Email Confirmation */}
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Email Confirmation</h2>
+          <div className="space-y-2">
+            <div className="flex items-center justify-between bg-gray-100 rounded-lg p-2">
+              <span className="text-sm text-gray-700">Invoice Attached</span>
+              <span className="text-sm font-semibold text-green-600">Sent</span>
+            </div>
+            <div className="flex items-center justify-between bg-gray-100 rounded-lg p-2">
+              <span className="text-sm text-gray-700">Payment Receipt</span>
+              <span className="text-sm font-semibold text-green-600">Sent</span>
+            </div>
+            <div className="flex items-center justify-between bg-gray-100 rounded-lg p-2">
+              <span className="text-sm text-gray-700">Terms & Conditions Accepted</span>
+              <span className="text-sm font-semibold text-green-600">Sent</span>
+            </div>
+            <div className="flex items-center justify-between bg-gray-100 rounded-lg p-2">
+              <span className="text-sm text-gray-700">Tier Description</span>
+              <span className="text-sm font-semibold text-green-600">Sent</span>
             </div>
           </div>
+        </div>
+
+        {/* Tier Description */}
+        <div className="mb-8 bg-gray-100 rounded-lg p-4" >
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Tier Description</h2>
+          <p className="text-sm text-gray-700 leading-relaxed">
+            {getTierDescription(displayTier)}
+          </p>
         </div>
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
           <button
             onClick={handleProceedToLogin}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+            className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
           >
             Proceed to Login
             <ArrowRight className="w-5 h-5" />

@@ -37,35 +37,33 @@ function PlatinumDetails() {
       <div className="w-full max-w-7xl mx-auto">
        
         {/* Header */}
-        <div className="mb-6">
+      
+
+        {/* Main Content Card */}
+        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mb-6">
+          {/* Purple Header */}
+          <div className="bg-gradient-to-r from-purple-600 to-purple-500 px-8 py-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3 flex-col items-center justify-center w-full">
+                <div className="relative" >
+                  <Gem className="w-8 h-8 text-white" />
+                  <Star className="w-4 h-4 text-yellow-300 absolute -top-1 -right-1" fill="currentColor" />
+                </div>
+                <h2 className="text-2xl font-bold text-white text-center">Platinum Subscription</h2>
+              </div>
+         <div>
           <div className="flex items-center justify-center mb-4 relative">
             
-            <button className="absolute right-16 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors text-sm">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button className="absolute right-12 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-2 rounded-lg transition-colors text-sm">
+              <svg className="w-6 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
               Compare Plans
             </button>
           </div>
         </div>
-
-        {/* Main Content Card */}
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mb-6">
-          {/* Purple Header */}
-          <div className="bg-gradient-to-r from-purple-600 to-purple-800 px-8 py-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className="relative">
-                  <Gem className="w-8 h-8 text-white" />
-                  <Star className="w-4 h-4 text-yellow-300 absolute -top-1 -right-1" fill="currentColor" />
-                </div>
-                <h2 className="text-2xl font-bold text-white">Platinum Subscription</h2>
-                <Star className="w-5 h-5 text-yellow-300" fill="currentColor" />
-              </div>
             </div>
-            <p className="text-purple-100 text-sm mb-2">
-              Elite tier with lifetime access and white-glove service. Invest once, benefit forever.
-            </p>
+           
             <div className="text-center mt-4">
               <p className="text-white text-lg font-semibold">Elite Membership Per User</p>
             </div>
@@ -74,13 +72,11 @@ function PlatinumDetails() {
           {/* Lifetime Access Pricing Section */}
           <div className="px-8 py-12 text-center bg-white">
             <div className="mb-6">
-              <Gem className="w-24 h-24 text-purple-600 mx-auto mb-6" />
-              <h3 className="text-4xl font-bold text-gray-900 mb-3">Lifetime Access</h3>
-              <p className="text-6xl font-bold text-gray-900 mb-4">$250,000</p>
+              <Gem className="w-24 h-24 text-white mx-auto mb-6 bg-purple-500 rounded-xl p-2" />
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">Lifetime Access</h3>
+              <p className="text-6xl font-semibold text-purple-500 mb-4">$250,000</p>
               <p className="text-gray-600 text-base mb-8">One-time payment • Lifetime benefits</p>
-              <button className="bg-green-600 hover:bg-green-700 text-white font-semibold px-10 py-4 rounded-xl transition-colors text-lg shadow-lg">
-                Never pay again
-              </button>
+            
             </div>
           </div>
 

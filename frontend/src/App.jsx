@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+// Registration & Payment Pages (without navbar)
 import Welcome from './pages/Welcome';
 import SubscriptionTiers from './pages/SubscriptionTiers';
 import PlanDetails from './pages/PlanDetails';
@@ -19,18 +21,19 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<SubscriptionTiers />} />
-        <Route path="/role-selection" element={<Welcome />} />
         <Route path="/plan-details" element={<PlanDetails />} />
+        <Route path="/role-selection" element={<Welcome />} />
         <Route path="/buyer/register" element={<BuyerRegistration />} />
         <Route path="/seller/register" element={<SellerRegistration />} />
+        <Route path="/agent/register" element={<AgentRegistration />} />
+        <Route path="/agent" element={<AgentRegistration />} />
         <Route path="/value-added-offerings" element={<ValueAddedOfferingsPage />} />
         <Route path="/payment" element={<PaymentSummary />} />
         <Route path="/complete-payment" element={<CompletePayment />} />
-        <Route path="/agent" element={<AgentRegistration />} />
-        <Route path="/agent/register" element={<AgentRegistration />} />
         <Route path="/success" element={<Success />} />
         <Route path="/dashboard/:buyerId" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/subscription-tiers" element={<SubscriptionTiers />} />
       </Routes>
       <ToastContainer position="top-right" autoClose={3000} />
     </>
@@ -38,4 +41,3 @@ function App() {
 }
 
 export default App;
-

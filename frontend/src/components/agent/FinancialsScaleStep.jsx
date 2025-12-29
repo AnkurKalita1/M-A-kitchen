@@ -203,3 +203,8 @@ function FinancialsScaleStep({ data, onSubmit, loading }) {
 export default FinancialsScaleStep;
 
 
+
+
+
+
+

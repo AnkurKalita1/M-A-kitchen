@@ -36,3 +36,5 @@ export const createAwsClients = (userType) => {
   return { dynamoDbClient, docClient, s3Client };
 };
 
+
+

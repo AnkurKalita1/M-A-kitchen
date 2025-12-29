@@ -137,33 +137,33 @@ function ProfessionalExperienceStep({ data, onSubmit, loading }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Left Column - Organization Fields */}
         <div className="space-y-4 sm:space-y-6">
-          <div>
+        <div>
             <label className="label text-sm sm:text-base">
               Organisation Name <span className="text-red-500">*</span>
             </label>
-            <input
-              type="text"
+          <input
+            type="text"
               className="input-field text-sm sm:text-base px-3 sm:px-4 py-2.5"
               placeholder="Organization Inc."
               {...register('organizationName', { required: 'Organisation name is required' })}
-            />
+          />
             {errors.organizationName && <p className="error-text text-xs sm:text-sm">{errors.organizationName.message}</p>}
-          </div>
+        </div>
 
-          <div>
+        <div>
             <label className="label text-sm sm:text-base">
               Headquarter <span className="text-red-500">*</span>
             </label>
-            <input
-              type="text"
+          <input
+            type="text"
               className="input-field text-sm sm:text-base px-3 sm:px-4 py-2.5"
               placeholder="City, Country"
               {...register('headquarter', { required: 'Headquarter location is required' })}
-            />
+          />
             {errors.headquarter && <p className="error-text text-xs sm:text-sm">{errors.headquarter.message}</p>}
-          </div>
+      </div>
 
-          <div>
+      <div>
             <label className="label text-sm sm:text-base">
               HQ Address <span className="text-red-500">*</span>
             </label>
@@ -172,15 +172,15 @@ function ProfessionalExperienceStep({ data, onSubmit, loading }) {
               rows="3"
               placeholder="complete office addresss"
               {...register('hqAddress', { required: 'HQ Address is required' })}
-            />
+        />
             {errors.hqAddress && <p className="error-text text-xs sm:text-sm">{errors.hqAddress.message}</p>}
           </div>
-        </div>
+      </div>
 
         {/* Right Column - Logo and LinkedIn */}
         <div className="space-y-4 sm:space-y-6">
           {/* Organization Logo - Full Width */}
-          <div>
+      <div>
             <label className="label text-sm sm:text-base">Logo</label>
             <div className="mt-1">
               {logoPreview ? (
@@ -212,7 +212,7 @@ function ProfessionalExperienceStep({ data, onSubmit, loading }) {
                   <Upload className={`w-6 h-6 sm:w-8 sm:h-8 mb-2 sm:mb-3 transition-colors ${isDragging ? 'text-blue-500' : 'text-gray-400'}`} />
                   <span className="text-sm sm:text-base font-medium text-gray-700 mb-1 px-2 text-center">Drop file here or click to upload</span>
                   <span className="text-xs sm:text-sm text-gray-500 px-2 text-center">PNG, JPG, SVG (recommended min. 200x200px)</span>
-                  <input
+        <input
                     type="file"
                     accept="image/png,image/jpeg,image/jpg,image/svg+xml"
                     onChange={handleLogoChange}
@@ -221,7 +221,7 @@ function ProfessionalExperienceStep({ data, onSubmit, loading }) {
                 </label>
               )}
             </div>
-          </div>
+      </div>
 
           <div>
             <label className="label text-sm sm:text-base">LinkedIn</label>
@@ -275,7 +275,7 @@ function ProfessionalExperienceStep({ data, onSubmit, loading }) {
               {...register('contactPersonnel', { required: 'Contact personnel is required' })}
             />
             {errors.contactPersonnel && <p className="error-text text-xs sm:text-sm">{errors.contactPersonnel.message}</p>}
-          </div>
+        </div>
 
           <div>
             <label className="label text-sm sm:text-base">
@@ -311,7 +311,7 @@ function ProfessionalExperienceStep({ data, onSubmit, loading }) {
                 + Add another phone
               </button>
             </div>
-          </div>
+        </div>
 
           <div>
             <label className="label text-sm sm:text-base">
@@ -319,33 +319,33 @@ function ProfessionalExperienceStep({ data, onSubmit, loading }) {
             </label>
             <div className="space-y-2">
               {emails.map((email, index) => (
-                <div key={index} className="flex gap-2">
-                  <input
+              <div key={index} className="flex gap-2">
+                <input
                     type="email"
                     className="input-field flex-1 text-sm sm:text-base px-3 sm:px-4 py-2.5"
                     placeholder="primary@company.com"
                     value={email}
                     onChange={(e) => updateEmail(index, e.target.value)}
                     required={index === 0}
-                  />
+                />
                   {emails.length > 1 && (
-                    <button
-                      type="button"
+                  <button
+                    type="button"
                       onClick={() => removeEmail(index)}
                       className="btn-secondary px-2 sm:px-3 text-xs sm:text-sm py-2.5 whitespace-nowrap"
-                    >
-                      Remove
-                    </button>
-                  )}
-                </div>
-              ))}
-              <button
-                type="button"
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            ))}
+            <button
+              type="button"
                 onClick={addEmail}
                 className="text-xs sm:text-sm text-blue-600 hover:text-blue-700 font-medium"
-              >
+            >
                 + Add another email
-              </button>
+            </button>
             </div>
           </div>
         </div>

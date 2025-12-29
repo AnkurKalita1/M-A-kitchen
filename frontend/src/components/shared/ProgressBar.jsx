@@ -69,7 +69,7 @@ function ProgressBar({ steps, currentStep, stepInfo }) {
           );
         })}
       </div>
-
+      
       
       {/* Step Info Banner */}
       {stepInfo && (
