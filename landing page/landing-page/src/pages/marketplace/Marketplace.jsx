@@ -2,7 +2,7 @@ import { Store } from 'lucide-react';
 
 const Marketplace = () => {
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-[#1e1f20]">
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 ">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <Store className="w-16 h-16 mx-auto text-purple-600 mb-4" />

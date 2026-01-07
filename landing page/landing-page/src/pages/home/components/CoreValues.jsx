@@ -3,16 +3,17 @@ import coreValuesBg from "../../../assets/coreValuesBg.png"
 
 const CoreValues = () => {
   return (
-    <section className="relative w-[98vw] h-[98vh] flex items-center justify-center overflow-hidden bg-cover bg-center mx-auto align-middle" style={{ backgroundImage: `url(${coreValuesBg})` }}>
+    <section className="relative w-[98vw] h-[94vh] flex items-center justify-center overflow-hidden bg-cover bg-center mx-auto align-middle opacity-80" style={{ backgroundImage: `url(${coreValuesBg})` }}>
       {/* Background image placeholder */}
      
+      {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
 
       {/* Centered content */}
-      <div className=" z-10 text-center px-4 sm:px-6 lg:px-8 max-w-xl flex flex-col items-center justify-center gap-10 font-serif mb-16">
-        <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-stone-800 mb-16 ">
+      <div className=" z-10 text-center px-4 sm:px-6 lg:px-8 max-w-xl flex flex-col items-center justify-center gap-10 font-serif  ">
+        <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-stone-900 mt-40 pt-8">
           CORE <br />VALUES
         </h2>
-        <p className="text-md md:text-lg lg:text-2xl max-w-3xl leading-relaxed text-black  font-semibold mb-18">
+        <p className="text-md md:text-lg lg:text-2xl max-w-3xl leading-relaxed text-black  font-semibold mt-16 ">
           {/* Placeholder text content */}
 
           Values Beyond Expectetions <br /> Intergrity <br />Courage <br /> Transparency <br /> Diversity <br /> Leadership

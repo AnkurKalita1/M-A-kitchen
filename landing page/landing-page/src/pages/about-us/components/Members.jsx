@@ -1,6 +1,12 @@
 import memberBg from "../../../assets/memberBg.png";
-import pinakId from "../../../assets/pinak-id.png";
-import pinakCard from "../../../assets/pinak-card.png";
+
+import pinakId from "../../../assets/members/pinak-id.png";
+import pinakCard from "../../../assets/members/pinak-card.png";
+import pamliId from "../../../assets/members/pamli-id.png";
+import pamliCard from "../../../assets/members/pamli-card.png";
+import michaelId from "../../../assets/members/michael-id.png";
+import michaelCard from "../../../assets/members/michael-card.png";
+
 
 const Members = () => {
     const members = [
@@ -16,72 +22,94 @@ const Members = () => {
             name: "Pamli Ganguly",
             title: "CTO",
             description: "Pamli brings a rare combination of engineering rigor, deep tech acumen and hands-on AI implementation experience to her role as CTO, bridging the critical gap between complex technology and tangible business outcomes at M&A Kitchen™. In her previous roles, she has architected complete AI-driven business transformations that reduced operational costs by 40–60% and built predictive systems that prevented millions in potential losses for clients. Her work spans custom AI agents using LLMs and SLMs, intelligent process automation, custom machine learning models, computer vision systems, predictive analytics and AR/VR integrations, guided by a philosophy that technology should solve problems rather than create complexity. Her technical leadership is grounded in pragmatic implementation and measurable impact. At M&A Kitchen™, she is building AI capabilities from the ground up by combining agentic AI systems, RPA automation, blockchain and immersive next-generation technologies into a cohesive platform that reimagines financial operations for simplicity and speed. Her experience includes leading AI product strategy, managing machine learning models, hands-on product management and technical architecture, enabling scalability, differentiation and industry-defining innovation.",
-            identityImage: pinakId, 
-            cardImage: pinakCard 
+            identityImage: pamliId, 
+            cardImage: pamliCard
         },
         {
             name: "Michael Leonardo Gitelmaker",
             title: "PARTNER",
             description: "With extensive experience operating large investment structures, funds and organizations, growing mid-sized and large conglomerates and taking companies public, Michael has built long-term relationships with a global network of institutional and UHNW investors, family offices, asset managers, serial entrepreneurs, innovators and international innovation hubs. His track record includes leading ventures from early-stage companies to IPOs and successful mergers, maintaining trusted relationships with some of the wealthiest families and business groups across the United States, Europe and Asia. Michael represents over $23 billion in capital for investments and acquisitions and is a seasoned investor and thought leader across industries including life sciences, technology commercialization, entertainment investment, industrial manufacturing, agriculture and food, telecommunications, television technology, government contracting and relations, internet and broadband infrastructure, drones, AI, SaaS, direct sales and marketing, mass media advertising and promotions. At M&A Kitchen™, he oversees investor relations and government affairs as Partner and continues to focus on developing new investment and business paradigms by combining insights from diverse industries with decades of generational expertise.",
-            identityImage: pinakId,
-            cardImage: pinakCard ,
+            identityImage: michaelId,
+            cardImage:  michaelCard ,
         }
     ];
 
     return (
         <div>
-            {members.map((member, index) => (
-                <section
-                    key={index}
-                    className="relative w-full md:py-24"
-                    style={{
-                        backgroundImage: `url(${memberBg})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat'
-                    }}
-                >
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="w-full flex flex-col md:flex-row font-serif">
-                            <div className="w-full md:w-[50%] flex flex-col space-y-4 md:space-y-6">
-                                <p className="text-white text-lg md:text-xl lg:text-2xl font-serif">
-                                    {member.name}
-                                </p>
-
-                                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-                                    {member.title}
-                                </h3>
-
-                                <div className="flex gap-0">
-                                    <div className="w-72 h-80 md:w-80 md:h-[32rem] lg:w-96 lg:h-[28rem]">
-                                        {member.identityImage ? (
-                                            <img src={member.identityImage} alt="Identity" className="w-full h-full object-cover rounded-2xl" />
-                                        ) : (
-                                            <span className="text-gray-400 text-xs text-center">IDENTITY<br />IMAGE<br />PLACEHOLDER</span>
-                                        )}
-                                    </div>
-
-                                    <div className="w-72 h-96 md:w-80 md:h-[32rem] lg:w-96 lg:h-[28rem] opacity-90">
-                                        {member.cardImage ? (
-                                            <img src={member.cardImage} alt="Card" className="w-full h-full object-cover rounded-2xl" />
-                                        ) : (
-                                            <span className="text-gray-400 text-xs text-center">CARD<br />IMAGE<br />PLACEHOLDER</span>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-full md:flex-1 pl-0 md:pl-8 lg:pl-12 mt-8 md:mt-0">
-                                <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed">
-                                    {member.description}
-                                </p>
-                            </div>
+          {members.map((member, index) => (
+            <section
+              key={index}
+              className="relative w-full md:py-24 overflow-hidden"
+            >
+              {/* BACKGROUND IMAGE */}
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${memberBg})`,
+                }}
+              />
+    
+              {/* DARK OVERLAY (controls opacity) */}
+              <div className="absolute inset-0 bg-black/60"></div>
+    
+              {/* CONTENT (NOT affected by opacity) */}
+              <div className="relative z-10">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="w-full flex flex-col md:flex-row font-serif">
+                    
+                    <div className="w-full md:w-[50%] flex flex-col space-y-4 md:space-y-6">
+                      <p className="text-white text-lg md:text-xl lg:text-2xl">
+                        {member.name}
+                      </p>
+    
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
+                        {member.title}
+                      </h3>
+    
+                      <div className="flex ">
+                        <div className="w-72 h-80 md:w-80 md:h-[32rem] lg:w-96 lg:h-[28rem] ">
+                          {member.identityImage ? (
+                            <img
+                              src={member.identityImage}
+                              alt="Identity"
+                              className="w-full h-full object-cover rounded-2xl "
+                            />
+                          ) : (
+                            <span className="text-gray-400 text-xs text-center">
+                              IDENTITY IMAGE PLACEHOLDER
+                            </span>
+                          )}
                         </div>
+    
+                        <div className="w-72 h-80 md:w-80 md:h-[32rem] lg:w-96 lg:h-[28rem] ">
+                          {member.cardImage ? (
+                            <img
+                              src={member.cardImage}
+                              alt="Card"
+                              className="w-full h-full object-cover rounded-2xl"
+                            />
+                          ) : (
+                            <span className="text-gray-400 text-xs text-center">
+                              CARD IMAGE PLACEHOLDER
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                </section>
-            ))}
+    
+                    <div className="w-full lg:px-12 md:flex-1 md:pl-8 mt-8 md:mt-0">
+                      <p className="text-white text-sm md:text-base lg:text-lg leading-relaxed">
+                        {member.description}
+                      </p>
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+            </section>
+          ))}
         </div>
-    );
+      );
 };
 
 export default Members;

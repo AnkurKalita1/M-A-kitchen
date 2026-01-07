@@ -1,8 +1,25 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import agentsHeroBg from "../../../assets/agentHeroBg.png";
 import spoon from "../../../assets/spoonImg.png";
 import logo from "../../../assets/logo.png";
 
 function AgentsHero() {
+  const [marketplaceId, setMarketplaceId] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Check if marketplaceId starts with AGT- and has format AGT-XXX
+    if (marketplaceId.trim().toUpperCase().startsWith('AGT-') && password.trim() !== '') {
+      navigate('/marketplace/agent');
+    } else {
+      alert('Please enter a valid Marketplace ID (AGT-XXX) and password');
+    }
+  };
+
   return (
     <section className="relative w-full h-[85vh] overflow-hidden isolate mt-4 pt-0">
       <div 
@@ -26,7 +43,7 @@ function AgentsHero() {
         </div>
 
         <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-full max-w-md pr-4 sm:pr-6 lg:pr-8 pl-4">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="flex items-center justify-end gap-4">
               <label htmlFor="marketplaceId" className="text-white text-base md:text-lg font-bold whitespace-nowrap bg-red-600 px-4 py-3 rounded-3xl border-4 border-yellow-600 font-serif opacity-70">
                 MARKETPLACE ID
@@ -34,8 +51,10 @@ function AgentsHero() {
               <input
                 type="text"
                 id="marketplaceId"
+                value={marketplaceId}
+                onChange={(e) => setMarketplaceId(e.target.value)}
                 className="flex-1 bg-red-600 text-white placeholder-white placeholder-opacity-70 px-12 py-3 border-none focus:outline-none focus:ring-0 opacity-70"
-                placeholder=""
+                placeholder="AGT-XXX"
               />
             </div>
 
@@ -46,9 +65,20 @@ function AgentsHero() {
               <input
                 type="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="flex-1 bg-red-600 text-white placeholder-white placeholder-opacity-70 px-12 py-3 border-none focus:outline-none focus:ring-0 opacity-70"
                 placeholder=""
               />
+            </div>
+
+            <div className="flex items-center justify-end pt-4 mr-8">
+              <button
+                type="submit"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-3xl border-4 border-yellow-600 font-serif opacity-90 transition-colors duration-200"
+              >
+                LOGIN
+              </button>
             </div>
 
             <div className="flex items-center justify-end pt-4 mr-8">

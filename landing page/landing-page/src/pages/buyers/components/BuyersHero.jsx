@@ -1,9 +1,26 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import buyerHeroTopBg from "../../../assets/buyerHeroTopBg.png";
 import buyerHeroBottomBg from "../../../assets/buyerHeroBottomBg.png";
 import spoon from "../../../assets/spoonImg.png";
 import logo from "../../../assets/logo.png";
 
 function BuyersHero() {
+  const [marketplaceId, setMarketplaceId] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Check if marketplaceId starts with BUY- and has format BUY-XXX
+    if (marketplaceId.trim().toUpperCase().startsWith('BUY-') && password.trim() !== '') {
+      navigate('/marketplace/buyer');
+    } else {
+      alert('Please enter a valid Marketplace ID (BUY-XXX) and password');
+    }
+  };
+
   return (
     <section className="relative w-full min-h-screen overflow-hidden isolate mt-4">
       <div 
@@ -34,7 +51,7 @@ function BuyersHero() {
         }}
       >
         <div className="relative z-10 w-full max-w-md mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="flex items-center justify-end gap-4">
               <label htmlFor="marketplaceId" className="text-white text-base md:text-lg font-bold whitespace-nowrap bg-red-600 px-4 py-3 rounded-3xl border-4 border-yellow-600 font-serif opacity-70">
                 MARKETPLACE ID
@@ -42,7 +59,10 @@ function BuyersHero() {
               <input
                 type="text"
                 id="marketplaceId"
-                className="flex-1 bg-red-600 text-white placeholder-white placeholder-opacity-70 px-12 py-3 border-none focus:outline-none focus:ring-0 opacity-70"                placeholder=""
+                value={marketplaceId}
+                onChange={(e) => setMarketplaceId(e.target.value)}
+                className="flex-1 bg-red-600 text-white placeholder-white placeholder-opacity-70 px-12 py-3 border-none focus:outline-none focus:ring-0 opacity-70"
+                placeholder="BUY-XXX"
               />
             </div>
 
@@ -53,9 +73,20 @@ function BuyersHero() {
               <input
                 type="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="flex-1 bg-red-600 text-white placeholder-white placeholder-opacity-70 px-12 py-3 border-none focus:outline-none focus:ring-0 opacity-70"
                 placeholder=""
               />
+            </div>
+
+            <div className="flex items-center justify-center pt-4">
+              <button
+                type="submit"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded-3xl border-4 border-yellow-600 font-serif opacity-90 transition-colors duration-200"
+              >
+                LOGIN
+              </button>
             </div>
 
             <div className="flex items-center justify-center pt-4">

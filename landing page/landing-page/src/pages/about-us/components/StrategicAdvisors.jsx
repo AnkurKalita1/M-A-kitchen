@@ -6,93 +6,145 @@ import advisorBgTop2 from "../../../assets/strategic-advisor/advisorBgTop-2.png"
 import advisorBgBottom2 from "../../../assets/strategic-advisor/advisorBgBottom-2.png";
 import advisorBg3 from "../../../assets/strategic-advisor/advisorBg-3.png";
 import advisorBg4 from "../../../assets/strategic-advisor/advisorBg-4.png";
+// section-1 advisors images
+import jimkeenan from "../../../assets/strategic-advisor/advisorsImg/jimKeenan.png"
+import peterstavros from "../../../assets/strategic-advisor/advisorsImg/peterStavros.png"
+import lionelassant from "../../../assets/strategic-advisor/advisorsImg/LionelAssant.png"
+import chipkaye from "../../../assets/strategic-advisor/advisorsImg/ChipKaye.png"
+
+// section-2 advisors images
+import tariqalwahedi from "../../../assets/strategic-advisor/advisorsImg/tariqAhmed.png"
+import rashmikhurana from "../../../assets/strategic-advisor/advisorsImg/rashmiKhurana.png"
+import jneely from "../../../assets/strategic-advisor/advisorsImg/jNeely.png"
+import martinbrand from "../../../assets/strategic-advisor/advisorsImg/martinBrand.png"
+import javedkhan from "../../../assets/strategic-advisor/advisorsImg/javedKhan.png"
+
+// section-3 advisors images
+import mattnord from "../../../assets/strategic-advisor/advisorsImg/MattNord.png"
+import tomwolf from "../../../assets/strategic-advisor/advisorsImg/tomWolf.png"
+import patrickthomson from "../../../assets/strategic-advisor/advisorsImg/patrickThomson.png"
+import davidking from "../../../assets/strategic-advisor/advisorsImg/davidKing.png"
+import alisawood from "../../../assets/strategic-advisor/advisorsImg/alisa.png"
+
+
+// section-4 advisors images
+import christianhyldahl from "../../../assets/strategic-advisor/advisorsImg/chrishtianHyladahl.png"
+import aanchalagarwal from "../../../assets/strategic-advisor/advisorsImg/anchalAgarwal.png"
+import robertswaak from "../../../assets/strategic-advisor/advisorsImg/RobertSwaak.png"
+import tanoyachatterjee from "../../../assets/strategic-advisor/advisorsImg/tanoyaChatterjee.png"
+import hazembegacem from "../../../assets/strategic-advisor/advisorsImg/hazem.png"
+
 
 const StrategicAdvisors = () => {
     const section1Advisors = [
         {
-            name: "Tariq Ahmed Alwahedi",
-            title: "Chairman of Private Family Office, EMX_AE, Logicon Capital"
+            name: "Jim Keenan",
+            title: "Ex Chief Investment Officer and Global Head of Private Debt at BlackRock",
+            image : jimkeenan ,
+
         },
         {
-            name: "Rashmi Khurana",
-            title: "CEO, Techfortune Venture Capital"
+            name: "Peter Stavros",
+            title: "Co-Head of Global Private Equity at KKR",
+            image : peterstavros ,
         },
         {
-            name: "J. Neely",
-            title: "Global M&A Practice Lead and Senior Managing Director, Accenture"
+            name: "Lionel Assant",
+            title: "Global Co-Chief Investment Officer, Blackstone",
+            image : lionelassant ,
+
         },
         {
-            name: "Martin Brand",
-            title: "Head of Private Equity, North America Blackstone"
+            name: "Chip Kaye",
+            title: "Chairman, Warburg Pincus",
+            image : chipkaye ,
+
         }
     ];
 
     const section2Advisors = [
         {
+            name: "Tariq Ahmed Alwahedi",
+            title: "MChairman of Private Family Office, EMX, AE, Logicon Capital",
+            image : tariqalwahedi ,
+
+        },
+        {
+            name: "Rashmi Khurana",
+            title: "CEO, Techforte Venture Capital",
+            image: rashmikhurana ,
+
+        },
+        {
+            name: "J. Neely",
+            title: "Global M&A Practice Lead and Senior Managing Director, Accenture",
+            image : jneely ,
+
+        },
+        {
+            name: "Martin Brand",
+            title: "Head of Private Equity, North America, Blackstone",
+            image : martinbrand ,
+        },
+        {
             name: "Javed Khan",
-            title: "Managing Partner, Rothschild & Co / CEO, Five Arrows"
-        },
-        {
-            name: "Jim Keenan",
-            title: "ex Chief Investment Officer and Global Head of Private Debt at BlackRock"
-        },
-        {
-            name: "Peter Stavros",
-            title: "Co-Head of Global Private Equity at KKR"
-        },
-        {
-            name: "Lionel Assant",
-            title: "Global Co-Chief Investment Officer, Blackstone"
-        },
-        {
-            name: "Chip Kaye",
-            title: "Chairman, Warburg Pincus"
+            title: "Managing Partner, Rothschild & Co; CEO, Five Arrows",
+            image : javedkhan ,
         }
     ];
 
     const section3Advisors = [
         {
-            name: "Christian Hyldahl",
-            title: "Managing Director, Head of Continental Europe at BlackRock"
-        },
-        {
-            name: "Aanchal Agarwal",
-            title: "Group Head of Corporate Development, IHH Healthcare"
-        },
-        {
-            name: "Robert Swaak",
-            title: "Non - Executive Director Barclays Bank UK, ex-CEO ABN AMRO"
-        },
-        {
-            name: "Tanoya Chatterjee",
-            title: "Operating Partner at Mubadala"
-        },
-        {
-            name: "Hazem Ben-Gacem",
-            title: "ex Co-Chief Executive Officer, Investcorp"
-        }
-    ];
-
-    const section4Advisors = [
-        {
             name: "Matt Nord",
-            title: "Co-Head of Equity, Apollo Global Management"
+            title: "Co-Head of Equity, Apollo Global Management",
+            image : mattnord ,
         },
         {
             name: "Tom Wolf",
-            title: "Former Chairman & CEO - RIB Software, Founder MetaWolf AG, TWO Family Office"
+            title: "Former Chairman & CEO - RIB Software, Founder MetaWolf AG, TWO Family Office",
+            image : tomwolf ,
         },
         {
             name: "Patrick Thomson",
-            title: "CEO Europe, Middle East & Africa at J.P. Morgan Asset Management"
+            title: "CEO Europe, Middle East & Africa at J.P. Morgan Asset Management",
+            image : patrickthomson ,
         },
         {
             name: "David King",
-            title: "Managing Director, Co-Head of Technology M&A at Bank of America Merrill Lynch"
+            title: "Managing Director, Co-Head of Technology M&A at Bank of America Merrill Lynch",
+                image : davidking ,
         },
         {
             name: "Alisa (Amarosa) Wood",
-            title: "Partner, KKR & Co-CEO, K-PEC"
+            title: "Partner, KKR & Co-CEO, K-PEC",
+            image : alisawood ,
+        }
+    ];
+    const section4Advisors = [
+        {
+            name: "Christian Hyldahl",
+            title: "Managing Director, Head of Continental Europe at BlackRock",
+            image : christianhyldahl ,
+        },
+        {
+            name: "Aanchal Agarwal",
+            title: "Group Head of Corporate Development, IHH Healthcare",
+            image : aanchalagarwal ,
+        },
+        {
+            name: "Robert Swaak",
+            title: "Non - Executive Director Barclays Bank UK, ex-CEO ABN AMRO",
+            image : robertswaak,
+        },
+        {
+            name: "Tanoya Chatterjee",
+            title: "Operating Partner at Mubadala",
+            image : tanoyachatterjee ,
+        },
+        {
+            name: "Hazem Ben-Gacem",
+            title: "ex Co-Chief Executive Officer, Investcorp",
+            image : hazembegacem ,
         }
     ];
 
@@ -100,9 +152,9 @@ const StrategicAdvisors = () => {
     const renderAdvisorCard = (advisor) => (
         <div className="flex flex-col items-center" style={{ minWidth: '200px', maxWidth: '280px', flex: '1 1 auto' }}>
             {/* Advisor Portrait - Circular, Fixed Size */}
-            <div className="w-40 h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 rounded-full border-4 border-green-800 overflow-hidden relative z-20">
+            <div className="w-40 h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 rounded-full border-4 border-green-800 overflow-hidden relative z-20 opacity-100 ">
                 <img
-                    src={advisorImage}
+                    src={advisor.image}
                     alt={advisor.name}
                     className="w-full h-full object-cover"
                 />
@@ -133,19 +185,19 @@ const StrategicAdvisors = () => {
     return (
         <div className="w-full">
             {/* Section 1: 4 advisors with split top/bottom backgrounds */}
-            <section className="relative w-full mb-16 opacity-50">
-                {/* Top Section - Portraits with top background */}
+            <section className="relative w-full mb-16 opacity-70">
+                {/* Top Section - */}
 
                 <div
                     className="relative w-full h-[32vh] flex items-center justify-center flex-col"
                     style={{
                         backgroundImage: `url(${advisorBgTop1})`,
-                        backgroundSize: 'contain',
+                        backgroundSize: 'cover',
                         backgroundPosition: 'cover',
                         backgroundRepeat: 'no-repeat'
                     }}
                 >
-                    <h2 className="text-7xl font-sembold text-center text-white font-serif mt-16">STRATEGIC <br />ADVISOR</h2>
+                    <h2 className="text-7xl font-sembold text-center text-white font-serif mt-16 opacity-100">STRATEGIC <br />ADVISOR</h2>
 
                 </div>
 
@@ -153,13 +205,14 @@ const StrategicAdvisors = () => {
 
 
 
-                {/* Bottom Section - Plates with bottom background */}
+                {/* Bottom Section -  */}
                 <div
                     className="relative w-full min-h-[30vh] flex items-start justify-center flex-col "
                     style={{
                         backgroundImage: `url(${advisorBgBottom1})`,
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat'
+                        // backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'cover'
                     }}
                 >
 
@@ -168,7 +221,7 @@ const StrategicAdvisors = () => {
                             {section1Advisors.map((advisor, index) => (
                                 <div key={index} className="w-40 h-40 md:w-48 md:h-48 lg:w-52 lg:h-64  overflow-hidden relative z-20 flex-shrink-0">
                                     <img
-                                        src={advisorImage}
+                                        src={advisor.image}
                                         alt={advisor.name}
                                         className="w-full h-full object-cover"
                                     />
@@ -205,7 +258,7 @@ const StrategicAdvisors = () => {
             </section>
 
             {/* Section 2: 5 advisors with split top/bottom backgrounds */}
-            <section className="relative w-full opacity-50">
+            <section className="relative w-full ">
                 {/* Top Section - Portraits with top background */}
                 <div
                     className="relative w-full h-[50vh] flex items-end justify-center "
@@ -221,7 +274,7 @@ const StrategicAdvisors = () => {
                             {section2Advisors.map((advisor, index) => (
                                 <div key={index} className="w-40 h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 border-4 border-green-800 rounded-full overflow-hidden relative z-20 flex-shrink-0">
                                     <img
-                                        src={advisorImage}
+                                        src={advisor.image}
                                         alt={advisor.name}
                                         className="w-full h-full object-cover"
                                     />
@@ -269,7 +322,7 @@ const StrategicAdvisors = () => {
 
             {/* Section 3:*/}
             <section
-                className="relative w-full min-h-screen flex flex-col items-center justify-center py-12 md:py-16 lg:py-20 opacity-50"
+                className="relative w-full min-h-screen flex flex-col items-center justify-center py-12 md:py-16 lg:py-20 opacity-70"
                 style={{
                     backgroundImage: `url(${advisorBg3})`,
                     backgroundSize: 'cover',
@@ -286,7 +339,7 @@ const StrategicAdvisors = () => {
 
             {/* Section 4*/}
             <section
-                className="relative w-full min-h-screen flex flex-col items-center justify-center py-12 md:py-16 lg:py-20 opacity-50"
+                className="relative w-full min-h-screen flex flex-col items-center justify-center py-12 md:py-16 lg:py-20 opacity-70"
                 style={{
                     backgroundImage: `url(${advisorBg4})`,
                     backgroundSize: 'cover',

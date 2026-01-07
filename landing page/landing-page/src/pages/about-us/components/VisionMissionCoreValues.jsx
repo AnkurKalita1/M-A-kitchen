@@ -50,14 +50,17 @@ const VisionMissionCoreValues = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative w-full min-h-screen overflow-hidden bg-[#1e1f20]"
+      className="relative w-full min-h-screen overflow-hidden "
       style={{
         backgroundImage: `url(${plateBg})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'bottom',
         backgroundRepeat: 'no-repeat'
       }}
     >
+
+<div className="absolute inset-0 bg-black opacity-60"></div>
+
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 font-serif">
         <div className="space-y-12 md:space-y-16">
           <div
@@ -71,17 +74,17 @@ const VisionMissionCoreValues = () => {
               willChange: 'transform, opacity',
             }}
           >
-            <p className="text-white text-base md:text-lg lg:text-xl mb-6">
+            <p className="text-white text-base md:text-lg lg:text-xl mb-6 opacity-100">
              "To transform Global Investment Banking into data centric organizations focused on client journey while moving middle- and back-office functionality into fintech"
             </p>
-            <h2 className="text-xl md:text-xl lg:text-3xl font-serif text-yellow-600 font-light">
+            <h2 className="text-xl md:text-xl lg:text-3xl font-serif text-yellow-600 font-light opacity-100">
               VISION
             </h2>
           </div>
 
-          <div className="w-[80%] flex justify-end">
+          <div className="w-[60%] flex justify-end mt-16" >
             <div
-              className={`w-[80%] px-16 transition-all duration-[700ms] ${
+              className={`w-[90%] px-16 transition-all duration-[700ms]  ${
                 missionVisible 
                   ? 'opacity-100 translate-x-0' 
                   : 'opacity-0 -translate-x-10'
@@ -92,7 +95,7 @@ const VisionMissionCoreValues = () => {
                 willChange: 'transform, opacity',
               }}
             >
-              <p className="text-white text-base md:text-lg lg:text-xl mb-6 ">
+              <p className="text-white text-base md:text-lg lg:text-xl mb-6 opacity-100">
                "Devoted to enabling the most comprehensive web & mobile based Investment Banking Platform for Investors & Sellers with live auction feature that revolutionizes the traditional approach and creates a convenience-oriented Industry segment - "Virtual Investment Banking" within financial services by 2027"
               </p>
               <h2 className="text-xl md:text-xl lg:text-2xl font-serif text-yellow-600 font-light">

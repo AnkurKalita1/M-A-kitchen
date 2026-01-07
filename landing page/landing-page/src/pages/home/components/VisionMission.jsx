@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-import visionMission from "../../../assets/visionMission.png"
+import vissionImg from "../../../assets/vision.png"
+import missionImg from "../../../assets/mission.png"
 
 const VisionMission = () => {
   const visionTextRef = useRef(null);
@@ -74,21 +75,35 @@ const VisionMission = () => {
           animation: missionSlideIn 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
       `}</style>
-      <section 
-        className="relative w-full h-screen overflow-hidden"
-        style={{
-          backgroundImage: `url(${visionMission})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
+      <section className="relative w-full h-screen overflow-hidden">
+        {/* Vision  */}
+        <div 
+          className="absolute top-0 left-0 w-full h-1/2 opacity-30"
+          style={{
+            backgroundImage: `url(${vissionImg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+
+        {/* Mission */}
+        <div 
+          className="absolute bottom-0 left-0 w-full h-1/2 opacity-30"
+          style={{
+            backgroundImage: `url(${missionImg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+
         <div className="relative z-10 w-full h-full flex flex-col">
           {/* vission */}
           <div className="flex-1 relative flex items-start">
             {/* Vision Heading  */}
             <div className="absolute top-8 md:top-12 lg:top-12 left-12 md:left-12 lg:left-14">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-white font-light px-16">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-[#DA6304] font-light px-16">
                 VISION
               </h2>
             </div>
@@ -118,7 +133,7 @@ const VisionMission = () => {
 
             {/* Mission Heading */}
             <div className="absolute top-8 md:top-12 lg:top-16 right-8 md:right-12 lg:right-16">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-white font-light">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-[#DA6304] font-light">
                 MISSION
               </h2>
             </div>

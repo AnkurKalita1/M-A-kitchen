@@ -1,17 +1,53 @@
-import helpDeskHero from "../../assets/helpDeskHero.png";
+import { useEffect, useRef } from 'react';
+import helpDeskHeroVdo from "../../assets/helpDeskHeroVdo.mp4";
 import spoon from "../../assets/spoonImg.png";
 import logo from "../../assets/logo.png";
 
 function HelpDeskHero() {
+  const videoRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && videoRef.current) {
+          videoRef.current.play().catch((error) => {
+            console.log('Video autoplay prevented:', error);
+          });
+        } else if (videoRef.current) {
+          videoRef.current.pause();
+        }
+      });
+    }, observerOptions);
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative w-full h-full overflow-hidden isolate">
-      <div 
-        className="relative w-full min-h-screen bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${helpDeskHero})`,
-        }}
-      >
-        <div className="z-10 text-center">
+    <section ref={sectionRef} className="relative w-full h-full overflow-hidden isolate">
+      <div className="relative w-full min-h-screen">
+        <video
+          ref={videoRef}
+          src={helpDeskHeroVdo}
+          className="absolute inset-0 w-full h-full object-cover"
+          loop
+          muted
+          playsInline
+        />
+        <div className="relative z-10 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white pt-20 font-serif">
             SUPPORT/HELPDESK
           </h1>
@@ -22,7 +58,7 @@ function HelpDeskHero() {
           <img src={logo} alt="logo" className="lg:w-55 lg:h-40 md:w-32 md:h-32 block m-0 p-0" />
         </div>
 
-        <div className="z-30 w-[90vw] md:w-[60vw] lg:w-[40vw] xl:w-[20vw] min-w-[400px] max-w-[600px] m-8 py-12">
+        <div className="relative z-30 w-[90vw] md:w-[60vw] lg:w-[40vw] xl:w-[20vw] min-w-[400px] max-w-[600px] m-8 py-12">
           <div className="bg-white rounded-lg shadow-2xl p-6 md:p-8">
             <div className="mb-6">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 ">

@@ -16,19 +16,19 @@ const ContactFooter = ({
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ROW 1 — CONTACT SECTION */}
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12 mb-16">
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-12 ">
           
           {/* LEFT COLUMN — HQ & Worldwide */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold mb-4">HQ</h3>
-              <p className="text-gray-300 whitespace-pre-line">
+              <h3 className="text-4xl font-semibold mb-4">HQ</h3>
+              <p className="text-gray-300 whitespace-pre-line text-xl">
                 {hqAddress}
               </p>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Worldwide</h3>
-              <p className="text-gray-300 whitespace-pre-line">
+            <div className="my-12">
+              <h3 className="text-4xl font-semibold my-4">Worldwide</h3>
+              <p className="text-gray-300 whitespace-pre-line text-xl">
                 {worldwideLocations}
               </p>
             </div>
@@ -36,7 +36,7 @@ const ContactFooter = ({
 
           {/* CENTER COLUMN — EMAIL US FORM */}
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center">EMAIL US</h3>
+            <h3 className="font-bold mb-6 text-center text-5xl">EMAIL US</h3>
             <form className="space-y-4">
               <div>
                 <input
@@ -111,12 +111,12 @@ const ContactFooter = ({
         </div>
 
         {/* ROW 2 — FOOTER LINKS */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 mb-12 border-t border-gray-800 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12 mb-12 border-t border-gray-800 pt-8">
           
           {/* COLUMN 1 — Logo & Social */}
           <div className="space-y-4">
             {/* Logo placeholder */}
-            <div className="w-24 h-24  flex items-center justify-center mb-4">
+            <div className="w-32 h-36  flex items-center justify-center mb-2">
              <img src={logo} alt="logo" className="w-full h-full object-contain" />
             </div>
             {/* Brand description placeholder */}

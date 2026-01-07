@@ -10,7 +10,10 @@ import Buyers from './pages/buyers/Buyers';
 import Sellers from './pages/sellers/Sellers';
 import Agents from './pages/agents/Agents';
 import VAOs from './pages/vaos/VAOs';
-import Marketplace from './pages/marketplace/Marketplace';
+import MarketplaceLogin from './pages/marketplace/MarketplaceLogin';
+import BuyerMarketplace from './pages/marketplace/buyer/BuyerMarketplace';
+import SellerMarketplace from './pages/marketplace/seller/SellerMarketplace';
+import AgentMarketplace from './pages/marketplace/agent/AgentMarketplace';
 import LiveAuction from './pages/live-auction/LiveAuction';
 import Helpdesk from './pages/helpdesk/Helpdesk';
 import ContactUs from './pages/contact-us/ContactUs';
@@ -27,12 +30,17 @@ function App() {
         <Route path="/sellers" element={<Sellers />} />
         <Route path="/agents" element={<Agents />} />
         <Route path="/vaos" element={<VAOs />} />
-        <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/marketplace" element={<MarketplaceLogin />} />
         <Route path="/live-auction" element={<LiveAuction />} />
         <Route path="/helpdesk" element={<Helpdesk />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/admin" element={<Admin />} />
       </Route>
+      
+      {/* Marketplace Pages (without Layout) */}
+      <Route path="/marketplace/buyer" element={<BuyerMarketplace />} />
+      <Route path="/marketplace/seller" element={<SellerMarketplace />} />
+      <Route path="/marketplace/agent" element={<AgentMarketplace />} />
     </Routes>
   
 

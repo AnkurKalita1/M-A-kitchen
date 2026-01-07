@@ -25,7 +25,7 @@ const AboutHero = () => {
       <div className="w-full py-12 md:py-16 bg-[#1e1f20]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           
-              <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6 lg:text-xl">
                 M&AKitchen™ is the registered trademark of PBKITCHENM&A (OPC) PRIVATE LIMITED – a one of its kind revolutionary concept that creates, enables & sustains a virtual "investment banking marketplace" for Buyers, Sellers and Advisors.
                 Our key differentiators include Agentic AI driven marketplace application, live auction investment events on the platform (AaS), empowered within a Blockchain, RPA and Quantum environment.
                 We understand that the main functions of a kitchen are to store, prepare and cook food (while completing related tasks such as dishwashing). The room or area may also be used for dining (or small meals like breakfast), entertainment and laundry.
